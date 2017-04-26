@@ -48,6 +48,13 @@ class ViewController: UIViewController {
     // information.
     // [START set_default_values]
     remoteConfig.setDefaultsFromPlistFileName("RemoteConfigDefaults")
+
+    if (FIRRemoteConfig.remoteConfig().defaultValue(forKey: "loading_phrase", namespace: nil)?.stringValue) != nil {
+        print("its working for you")
+    } else {
+        print("PROBLEM: it should have a string value of 'Fetching config...'")
+    }
+
     // [END set_default_values]
 
     fetchConfig()
